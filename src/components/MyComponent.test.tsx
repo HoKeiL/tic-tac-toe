@@ -1,11 +1,11 @@
 import { render, screen } from "../testUtils/testUtils";
-import { MyComponent } from "./MyComponent";
+import { TicTacToe } from "./TicTacToe";
 
 //An example of using react-testing-library
-describe("MyComponent", async () => {
-    test("Should have text Hello from My Component on it", () => {
-        render(<MyComponent />);
-        const elem = screen.getByText("Hello from My Component");
+describe("Tic Tac Toe", async () => {
+    test("Should have text Tic Tac Toe on it", () => {
+        render(<TicTacToe />);
+        const elem = screen.getByText("X");
         expect(elem).toBeInTheDocument();
     });
 });
