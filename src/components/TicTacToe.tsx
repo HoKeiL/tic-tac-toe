@@ -1,18 +1,11 @@
 import { useState } from "react";
+import { checkDraw } from "../utils/checkDraw";
+import { checkWinner } from "../utils/checkWinner";
+import { updateScore } from "../utils/updateScore";
 import { Board } from "./Board";
 import { ScoreBoard } from "./ScoreBoard";
 
 export function TicTacToe(): JSX.Element {
-    const winCondition = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-    ];
     const [board, setboard] = useState(Array(9).fill(null));
     const [xPlaying, setXPlaying] = useState(true);
     const [score, setScore] = useState({ xScore: 0, oScore: 0 });
@@ -26,18 +19,12 @@ export function TicTacToe(): JSX.Element {
                 return value;
             }
         });
-        const winner = checkWinner(updateBoard);
-        if (winner) {
-            if (winner === "X") {
-                let { xScore } = score;
-                xScore++;
-                setScore({ ...score, xScore });
-            } else {
-                let { oScore } = score;
-                oScore++;
-                setScore({ ...score, oScore });
-            }
-        }
+        const winner = checkWinner({ updateBoard, setGameOver });
+        updateScore({
+            winner,
+            score,
+            setScore,
+        });
         setboard(updateBoard);
         setXPlaying(!xPlaying);
         const draw = checkDraw(updateBoard);
@@ -45,24 +32,6 @@ export function TicTacToe(): JSX.Element {
             setboard(Array(9).fill(null));
         }
     };
-
-    function checkWinner(board: string[]) {
-        for (let i = 0; i < winCondition.length; i++) {
-            const [a, b, c] = winCondition[i];
-            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                setGameOver(true);
-                return board[a];
-            }
-        }
-    }
-
-    function checkDraw(board: (string | null)[]) {
-        const hasNull = board.includes(null);
-        if (!hasNull) {
-            alert("it's a draw! Reset Board");
-            return true;
-        }
-    }
 
     function resetBoard() {
         setGameOver(false);
