@@ -40,6 +40,10 @@ export function TicTacToe(): JSX.Element {
         }
         setboard(updateBoard);
         setXPlaying(!xPlaying);
+        const draw = checkDraw(updateBoard);
+        if (draw) {
+            setboard(Array(9).fill(null));
+        }
     };
 
     function checkWinner(board: string[]) {
@@ -49,6 +53,14 @@ export function TicTacToe(): JSX.Element {
                 setGameOver(true);
                 return board[a];
             }
+        }
+    }
+
+    function checkDraw(board: (string | null)[]) {
+        const hasNull = board.includes(null);
+        if (!hasNull) {
+            alert("it's a draw! Reset Board");
+            return true;
         }
     }
 
