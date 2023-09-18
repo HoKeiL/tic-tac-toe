@@ -1,9 +1,5 @@
+import { boardProps } from "../utils/interface";
 import { Box } from "./Box";
-
-interface boardProps {
-    board: string[];
-    onClick: (boxIndex: number) => void;
-}
 
 export function Board({ board, onClick }: boardProps): JSX.Element {
     return (

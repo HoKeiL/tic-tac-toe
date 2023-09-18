@@ -1,10 +1,4 @@
-interface scoreboardProps {
-    score: {
-        xScore: number;
-        oScore: number;
-    };
-    xPlaying: boolean;
-}
+import { scoreboardProps } from "../utils/interface";
 
 export function ScoreBoard({ score, xPlaying }: scoreboardProps): JSX.Element {
     const { xScore, oScore } = score;

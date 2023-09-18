@@ -1,6 +1,6 @@
-import { TicTacToe } from "./TicTacToe";
 import "./App.css";
 import { Footer } from "./Footer";
+import { TicTacToe } from "./TicTacToe";
 
 function App() {
     return (
