@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    color: #0c1c38;
 }
 
 body {
@@ -89,4 +90,15 @@ body {
 
 .inactive {
     border-bottom: 5px solid transparent;
+}
+
+.footer {
+    text-align: center;
+}
+
+a:hover {
+    color: #2e65c9;
+}
+a:active {
+    color: #d44735;
 }

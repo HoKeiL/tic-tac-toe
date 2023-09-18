@@ -1,10 +1,16 @@
 import { TicTacToe } from "./TicTacToe";
 import "./App.css";
+import { Footer } from "./Footer";
 
 function App() {
     return (
         <div className="App">
-            <TicTacToe />
+            <div className="main">
+                <TicTacToe />
+            </div>
+            <div className="footer">
+                <Footer />
+            </div>
         </div>
     );
 }
